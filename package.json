@@ -1,0 +1,30 @@
+{
+  "name": "@openovate/jsm",
+  "version": "0.0.1",
+  "description": "JavaScript Modules that Work in Node, and Browser",
+  "author": "Christian Blanquera <cblanquera@openovate.com>",
+  "license": "MIT",
+  "homepage": "https://github.com/openovate/jsm#readme",
+  "bugs": {
+    "url": "https://github.com/openovate/jsm/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/openovate/jsm.git"
+  },
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "test": "jest",
+    "build": "tsc"
+  },
+  "devDependencies": {
+    "@types/jest": "^24.0.18",
+    "jest": "^24.8.0",
+    "ts-jest": "^24.0.2",
+    "typescript": "^3.6.3"
+  }
+}
