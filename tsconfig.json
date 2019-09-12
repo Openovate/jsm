@@ -16,5 +16,10 @@
     "node_modules",
     "dist",
     "test"
-  ]
+  ],
+  "typedocOptions": {
+    "mode": "modules",
+    "theme": "markdown",
+    "out": "docs"
+  }
 }
