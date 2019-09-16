@@ -12,7 +12,6 @@ export {
   Exception,
   Registry,
   TaskQueue,
-
   Event,
   Queue,
   Task
