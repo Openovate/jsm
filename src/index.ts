@@ -1,3 +1,7 @@
+import Event from './contracts/Event';
+import Queue from './contracts/Queue';
+import Task from './contracts/Task';
+
 import EventEmitter from './EventEmitter'
 import Exception from './Exception'
 import Registry from './Registry'
@@ -7,5 +11,9 @@ export {
   EventEmitter,
   Exception,
   Registry,
-  TaskQueue
+  TaskQueue,
+
+  Event,
+  Queue,
+  Task
 }

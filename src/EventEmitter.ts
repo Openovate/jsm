@@ -37,7 +37,7 @@ export default class EventEmitter {
   /**
    * Static event data analyzer
    */
-  public readonly event: Event = {
+  public event: Event = {
     event: 'idle',
     pattern: 'idle',
     variables: []
@@ -46,7 +46,7 @@ export default class EventEmitter {
   /**
    * Event regular expression map
    */
-  public readonly regexp: string[] = [];
+  public regexp: string[] = [];
 
   /**
    * Used to inject another queue class that implements the Queue interface
@@ -104,7 +104,7 @@ export default class EventEmitter {
    *
    * @param event - The name of the arbitrary event to match
    */
-  match(event: string): Record<string, Event> {
+  public match(event: string): Record<string, Event> {
     const matches: Record<string, Event> = {};
 
     //do the obvious match
@@ -154,7 +154,7 @@ export default class EventEmitter {
    * @param callback - The task to run when event is emitted
    * @param priority - The priority order in which call the task
    */
-  on(event: string|string[]|RegExp, callback: Function, priority: number = 0): EventEmitter {
+  public on(event: string|string[]|RegExp, callback: Function, priority: number = 0): EventEmitter {
     //deal with multiple events
     if (Array.isArray(event)) {
       event.forEach((event: string) => {
@@ -190,7 +190,7 @@ export default class EventEmitter {
    * @param event - The name of the event to stop listening to
    * @param callback - The task to remove
    */
-  unbind(event?: string, callback?: Function): EventEmitter {
+  public unbind(event: string|null = null, callback: Function|null = null): EventEmitter {
     //if there is no event and not callable
     if (!event && !callback) {
         //it means that they want to remove everything

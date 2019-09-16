@@ -24,7 +24,7 @@ emitter.on(/trigger (something)/, async x => {
   console.log('(something) triggered', x + 2)
 }, 2)
 
-await emitter.trigger('trigger something', 1)
+await emitter.emit('trigger something', 1)
 ```
 
 ## Exception Usage
