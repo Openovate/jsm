@@ -25,7 +25,7 @@
 
 • **args**? : *any[]*
 
-*Defined in [contracts/Event.ts:5](https://github.com/Openovate/jsm/blob/edb8b6a/src/contracts/Event.ts#L5)*
+*Defined in [contracts/Event.ts:5](https://github.com/Openovate/jsm/blob/4675aed/src/contracts/Event.ts#L5)*
 
 ___
 
@@ -33,7 +33,7 @@ ___
 
 • **callback**? : *Function*
 
-*Defined in [contracts/Event.ts:6](https://github.com/Openovate/jsm/blob/edb8b6a/src/contracts/Event.ts#L6)*
+*Defined in [contracts/Event.ts:6](https://github.com/Openovate/jsm/blob/4675aed/src/contracts/Event.ts#L6)*
 
 ___
 
@@ -41,7 +41,7 @@ ___
 
 • **event**: *string*
 
-*Defined in [contracts/Event.ts:2](https://github.com/Openovate/jsm/blob/edb8b6a/src/contracts/Event.ts#L2)*
+*Defined in [contracts/Event.ts:2](https://github.com/Openovate/jsm/blob/4675aed/src/contracts/Event.ts#L2)*
 
 ___
 
@@ -49,7 +49,7 @@ ___
 
 • **pattern**: *string*
 
-*Defined in [contracts/Event.ts:3](https://github.com/Openovate/jsm/blob/edb8b6a/src/contracts/Event.ts#L3)*
+*Defined in [contracts/Event.ts:3](https://github.com/Openovate/jsm/blob/4675aed/src/contracts/Event.ts#L3)*
 
 ___
 
@@ -57,7 +57,7 @@ ___
 
 • **priority**? : *undefined | number*
 
-*Defined in [contracts/Event.ts:7](https://github.com/Openovate/jsm/blob/edb8b6a/src/contracts/Event.ts#L7)*
+*Defined in [contracts/Event.ts:7](https://github.com/Openovate/jsm/blob/4675aed/src/contracts/Event.ts#L7)*
 
 ___
 
@@ -65,4 +65,4 @@ ___
 
 • **variables**: *string[]*
 
-*Defined in [contracts/Event.ts:4](https://github.com/Openovate/jsm/blob/edb8b6a/src/contracts/Event.ts#L4)*
+*Defined in [contracts/Event.ts:4](https://github.com/Openovate/jsm/blob/4675aed/src/contracts/Event.ts#L4)*

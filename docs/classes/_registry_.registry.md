@@ -43,7 +43,7 @@ data store.
 
 \+ **new Registry**(`data`: object): *[Registry](_registry_.registry.md)*
 
-*Defined in [Registry.ts:10](https://github.com/Openovate/jsm/blob/edb8b6a/src/Registry.ts#L10)*
+*Defined in [Registry.ts:10](https://github.com/Openovate/jsm/blob/4675aed/src/Registry.ts#L10)*
 
 Sets the initial data
 
@@ -61,7 +61,7 @@ Name | Type | Default |
 
 • **data**: *object*
 
-*Defined in [Registry.ts:10](https://github.com/Openovate/jsm/blob/edb8b6a/src/Registry.ts#L10)*
+*Defined in [Registry.ts:10](https://github.com/Openovate/jsm/blob/4675aed/src/Registry.ts#L10)*
 
 ## Methods
 
@@ -69,7 +69,7 @@ Name | Type | Default |
 
 ▸ **get**(...`path`: string | number[]): *any*
 
-*Defined in [Registry.ts:24](https://github.com/Openovate/jsm/blob/edb8b6a/src/Registry.ts#L24)*
+*Defined in [Registry.ts:24](https://github.com/Openovate/jsm/blob/4675aed/src/Registry.ts#L24)*
 
 Retrieves the data stored specified by the path
 
@@ -87,7 +87,7 @@ ___
 
 ▸ **getDot**(`notation`: string, `separator`: string): *any*
 
-*Defined in [Registry.ts:51](https://github.com/Openovate/jsm/blob/edb8b6a/src/Registry.ts#L51)*
+*Defined in [Registry.ts:51](https://github.com/Openovate/jsm/blob/4675aed/src/Registry.ts#L51)*
 
 Gets a value given the path in the registry.
 
@@ -108,7 +108,7 @@ ___
 
 ▸ **has**(...`path`: string | number[]): *boolean*
 
-*Defined in [Registry.ts:61](https://github.com/Openovate/jsm/blob/edb8b6a/src/Registry.ts#L61)*
+*Defined in [Registry.ts:61](https://github.com/Openovate/jsm/blob/4675aed/src/Registry.ts#L61)*
 
 Returns true if the specified path exists
 
@@ -126,7 +126,7 @@ ___
 
 ▸ **hasDot**(`notation`: string, `separator`: string): *boolean*
 
-*Defined in [Registry.ts:94](https://github.com/Openovate/jsm/blob/edb8b6a/src/Registry.ts#L94)*
+*Defined in [Registry.ts:94](https://github.com/Openovate/jsm/blob/4675aed/src/Registry.ts#L94)*
 
 Checks to see if a key is set
 
@@ -145,7 +145,7 @@ ___
 
 ▸ **makeArray**(`hash`: object): *Array‹any›*
 
-*Defined in [Registry.ts:189](https://github.com/Openovate/jsm/blob/edb8b6a/src/Registry.ts#L189)*
+*Defined in [Registry.ts:189](https://github.com/Openovate/jsm/blob/4675aed/src/Registry.ts#L189)*
 
 Transforms an object into an arra
 
@@ -163,7 +163,7 @@ ___
 
 ▸ **makeObject**(`array`: any[]): *object*
 
-*Defined in [Registry.ts:208](https://github.com/Openovate/jsm/blob/edb8b6a/src/Registry.ts#L208)*
+*Defined in [Registry.ts:208](https://github.com/Openovate/jsm/blob/4675aed/src/Registry.ts#L208)*
 
 Transforms an object into an arra
 
@@ -181,7 +181,7 @@ ___
 
 ▸ **remove**(...`path`: string | number[]): *[Registry](_registry_.registry.md)*
 
-*Defined in [Registry.ts:106](https://github.com/Openovate/jsm/blob/edb8b6a/src/Registry.ts#L106)*
+*Defined in [Registry.ts:106](https://github.com/Openovate/jsm/blob/4675aed/src/Registry.ts#L106)*
 
 Removes the data from a specified path
 
@@ -199,7 +199,7 @@ ___
 
 ▸ **removeDot**(`notation`: string, `separator`: string): *[Registry](_registry_.registry.md)*
 
-*Defined in [Registry.ts:135](https://github.com/Openovate/jsm/blob/edb8b6a/src/Registry.ts#L135)*
+*Defined in [Registry.ts:135](https://github.com/Openovate/jsm/blob/4675aed/src/Registry.ts#L135)*
 
 Removes name space given notation
 
@@ -218,7 +218,7 @@ ___
 
 ▸ **set**(...`path`: any[]): *[Registry](_registry_.registry.md)*
 
-*Defined in [Registry.ts:148](https://github.com/Openovate/jsm/blob/edb8b6a/src/Registry.ts#L148)*
+*Defined in [Registry.ts:148](https://github.com/Openovate/jsm/blob/4675aed/src/Registry.ts#L148)*
 
 Sets the data of a specified path
 
@@ -236,7 +236,7 @@ ___
 
 ▸ **setDot**(`notation`: string, `value`: any, `separator`: string): *[Registry](_registry_.registry.md)*
 
-*Defined in [Registry.ts:177](https://github.com/Openovate/jsm/blob/edb8b6a/src/Registry.ts#L177)*
+*Defined in [Registry.ts:177](https://github.com/Openovate/jsm/blob/4675aed/src/Registry.ts#L177)*
 
 Creates the name space given the space
 and sets the value to that name space
@@ -257,7 +257,7 @@ ___
 
 ▸ **shouldBeAnArray**(`hash`: object): *boolean*
 
-*Defined in [Registry.ts:217](https://github.com/Openovate/jsm/blob/edb8b6a/src/Registry.ts#L217)*
+*Defined in [Registry.ts:217](https://github.com/Openovate/jsm/blob/4675aed/src/Registry.ts#L217)*
 
 Returns true if object keys is all numbers
 
@@ -275,7 +275,7 @@ ___
 
 ▸ **walk**(`data`: object, `path`: any, `value`: any): *[Registry](_registry_.registry.md)*
 
-*Defined in [Registry.ts:242](https://github.com/Openovate/jsm/blob/edb8b6a/src/Registry.ts#L242)*
+*Defined in [Registry.ts:242](https://github.com/Openovate/jsm/blob/4675aed/src/Registry.ts#L242)*
 
 Walks the data, look to the end and setting the value
 

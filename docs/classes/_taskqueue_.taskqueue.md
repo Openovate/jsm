@@ -52,7 +52,7 @@ setting priorities in tasks
 
 • **lower**: *number* = 0
 
-*Defined in [TaskQueue.ts:46](https://github.com/Openovate/jsm/blob/edb8b6a/src/TaskQueue.ts#L46)*
+*Defined in [TaskQueue.ts:46](https://github.com/Openovate/jsm/blob/4675aed/src/TaskQueue.ts#L46)*
 
 Used when determining what is the lowest priority
 when pushing into the queue
@@ -65,7 +65,7 @@ ___
 
 *Implementation of [Queue](../interfaces/_contracts_queue_.queue.md).[queue](../interfaces/_contracts_queue_.queue.md#queue)*
 
-*Defined in [TaskQueue.ts:40](https://github.com/Openovate/jsm/blob/edb8b6a/src/TaskQueue.ts#L40)*
+*Defined in [TaskQueue.ts:40](https://github.com/Openovate/jsm/blob/4675aed/src/TaskQueue.ts#L40)*
 
 The in memory task queue
 
@@ -75,7 +75,7 @@ ___
 
 • **upper**: *number* = 0
 
-*Defined in [TaskQueue.ts:52](https://github.com/Openovate/jsm/blob/edb8b6a/src/TaskQueue.ts#L52)*
+*Defined in [TaskQueue.ts:52](https://github.com/Openovate/jsm/blob/4675aed/src/TaskQueue.ts#L52)*
 
 Used when determining what is the lowest priority
 when shifting into the queue
@@ -86,7 +86,7 @@ ___
 
 ▪ **STATUS_EMPTY**: *number* = 404
 
-*Defined in [TaskQueue.ts:18](https://github.com/Openovate/jsm/blob/edb8b6a/src/TaskQueue.ts#L18)*
+*Defined in [TaskQueue.ts:18](https://github.com/Openovate/jsm/blob/4675aed/src/TaskQueue.ts#L18)*
 
 Used to report that there are no tasks found when ran
 
@@ -96,7 +96,7 @@ ___
 
 ▪ **STATUS_INCOMPLETE**: *number* = 308
 
-*Defined in [TaskQueue.ts:23](https://github.com/Openovate/jsm/blob/edb8b6a/src/TaskQueue.ts#L23)*
+*Defined in [TaskQueue.ts:23](https://github.com/Openovate/jsm/blob/4675aed/src/TaskQueue.ts#L23)*
 
 Used to report that a task aborted when ran
 
@@ -106,7 +106,7 @@ ___
 
 ▪ **STATUS_OK**: *number* = 200
 
-*Defined in [TaskQueue.ts:28](https://github.com/Openovate/jsm/blob/edb8b6a/src/TaskQueue.ts#L28)*
+*Defined in [TaskQueue.ts:28](https://github.com/Openovate/jsm/blob/4675aed/src/TaskQueue.ts#L28)*
 
 Used to report that all tasks were called when ran
 
@@ -116,7 +116,7 @@ Used to report that all tasks were called when ran
 
 • **get length**(): *number*
 
-*Defined in [TaskQueue.ts:33](https://github.com/Openovate/jsm/blob/edb8b6a/src/TaskQueue.ts#L33)*
+*Defined in [TaskQueue.ts:33](https://github.com/Openovate/jsm/blob/4675aed/src/TaskQueue.ts#L33)*
 
 The length of the queue
 
@@ -130,7 +130,7 @@ The length of the queue
 
 *Implementation of [Queue](../interfaces/_contracts_queue_.queue.md)*
 
-*Defined in [TaskQueue.ts:60](https://github.com/Openovate/jsm/blob/edb8b6a/src/TaskQueue.ts#L60)*
+*Defined in [TaskQueue.ts:60](https://github.com/Openovate/jsm/blob/4675aed/src/TaskQueue.ts#L60)*
 
 Adds a task to the queue
 
@@ -149,7 +149,7 @@ ___
 
 ▸ **purge**(`callback?`: Function): *[TaskQueue](_taskqueue_.taskqueue.md)*
 
-*Defined in [TaskQueue.ts:85](https://github.com/Openovate/jsm/blob/edb8b6a/src/TaskQueue.ts#L85)*
+*Defined in [TaskQueue.ts:85](https://github.com/Openovate/jsm/blob/4675aed/src/TaskQueue.ts#L85)*
 
 Removes all tasks from the queue
 
@@ -169,7 +169,7 @@ ___
 
 *Implementation of [Queue](../interfaces/_contracts_queue_.queue.md)*
 
-*Defined in [TaskQueue.ts:109](https://github.com/Openovate/jsm/blob/edb8b6a/src/TaskQueue.ts#L109)*
+*Defined in [TaskQueue.ts:109](https://github.com/Openovate/jsm/blob/4675aed/src/TaskQueue.ts#L109)*
 
 Adds a task to the bottom of the queue
 
@@ -189,7 +189,7 @@ ___
 
 *Implementation of [Queue](../interfaces/_contracts_queue_.queue.md)*
 
-*Defined in [TaskQueue.ts:136](https://github.com/Openovate/jsm/blob/edb8b6a/src/TaskQueue.ts#L136)*
+*Defined in [TaskQueue.ts:136](https://github.com/Openovate/jsm/blob/4675aed/src/TaskQueue.ts#L136)*
 
 Runs the tasks
 
@@ -209,7 +209,7 @@ ___
 
 *Implementation of [Queue](../interfaces/_contracts_queue_.queue.md)*
 
-*Defined in [TaskQueue.ts:118](https://github.com/Openovate/jsm/blob/edb8b6a/src/TaskQueue.ts#L118)*
+*Defined in [TaskQueue.ts:118](https://github.com/Openovate/jsm/blob/4675aed/src/TaskQueue.ts#L118)*
 
 Adds a task to the top of the queue
 
@@ -227,7 +227,7 @@ ___
 
 ▸ **then**(`callback`: Function): *[TaskQueue](_taskqueue_.taskqueue.md)*
 
-*Defined in [TaskQueue.ts:127](https://github.com/Openovate/jsm/blob/edb8b6a/src/TaskQueue.ts#L127)*
+*Defined in [TaskQueue.ts:127](https://github.com/Openovate/jsm/blob/4675aed/src/TaskQueue.ts#L127)*
 
 When calling await, js looks for a then (to emulate a promise)
 
@@ -245,7 +245,7 @@ ___
 
 ▸ **unbind**(`callback`: Function): *[TaskQueue](_taskqueue_.taskqueue.md)*
 
-*Defined in [TaskQueue.ts:158](https://github.com/Openovate/jsm/blob/edb8b6a/src/TaskQueue.ts#L158)*
+*Defined in [TaskQueue.ts:158](https://github.com/Openovate/jsm/blob/4675aed/src/TaskQueue.ts#L158)*
 
 Removes a task from the queue
 

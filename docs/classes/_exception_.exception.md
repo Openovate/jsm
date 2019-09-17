@@ -35,7 +35,7 @@ of an error that has occured
 
 \+ **new Exception**(`message`: string, `code`: number): *[Exception](_exception_.exception.md)*
 
-*Defined in [Exception.ts:24](https://github.com/Openovate/jsm/blob/edb8b6a/src/Exception.ts#L24)*
+*Defined in [Exception.ts:24](https://github.com/Openovate/jsm/blob/4675aed/src/Exception.ts#L24)*
 
 An exception should provide a message and a name
 
@@ -54,7 +54,7 @@ Name | Type | Default | Description |
 
 • **code**: *number*
 
-*Defined in [Exception.ts:9](https://github.com/Openovate/jsm/blob/edb8b6a/src/Exception.ts#L9)*
+*Defined in [Exception.ts:9](https://github.com/Openovate/jsm/blob/4675aed/src/Exception.ts#L9)*
 
 ___
 
@@ -62,7 +62,7 @@ ___
 
 • **errors**: *object*
 
-*Defined in [Exception.ts:14](https://github.com/Openovate/jsm/blob/edb8b6a/src/Exception.ts#L14)*
+*Defined in [Exception.ts:14](https://github.com/Openovate/jsm/blob/4675aed/src/Exception.ts#L14)*
 
 ___
 
@@ -70,7 +70,7 @@ ___
 
 • **message**: *string*
 
-*Defined in [Exception.ts:19](https://github.com/Openovate/jsm/blob/edb8b6a/src/Exception.ts#L19)*
+*Defined in [Exception.ts:19](https://github.com/Openovate/jsm/blob/4675aed/src/Exception.ts#L19)*
 
 ___
 
@@ -78,7 +78,7 @@ ___
 
 • **name**: *string*
 
-*Defined in [Exception.ts:24](https://github.com/Openovate/jsm/blob/edb8b6a/src/Exception.ts#L24)*
+*Defined in [Exception.ts:24](https://github.com/Openovate/jsm/blob/4675aed/src/Exception.ts#L24)*
 
 ## Methods
 
@@ -86,7 +86,7 @@ ___
 
 ▸ **for**(`message`: string, ...`values`: any[]): *[Exception](_exception_.exception.md)*
 
-*Defined in [Exception.ts:46](https://github.com/Openovate/jsm/blob/edb8b6a/src/Exception.ts#L46)*
+*Defined in [Exception.ts:46](https://github.com/Openovate/jsm/blob/4675aed/src/Exception.ts#L46)*
 
 General use expressive reasons
 
@@ -105,7 +105,7 @@ ___
 
 ▸ **forErrorsFound**(`errors`: object): *[Exception](_exception_.exception.md)*
 
-*Defined in [Exception.ts:61](https://github.com/Openovate/jsm/blob/edb8b6a/src/Exception.ts#L61)*
+*Defined in [Exception.ts:61](https://github.com/Openovate/jsm/blob/4675aed/src/Exception.ts#L61)*
 
 Expressive error report
 

@@ -30,7 +30,7 @@ emitter.on(/trigger (something)/, async x => {
   console.log('(something) triggered', x + 2)
 }, 2)
 
-await emitter.trigger('trigger something', 1)
+await emitter.emit('trigger something', 1)
 ```
 
 ## Exception Usage
@@ -82,4 +82,47 @@ queue.add(async x => {
 }, 10)
 
 await queue.run(1)
+```
+
+## Reflection Usage
+
+```js
+class Foo {
+  foo(x, y, z) {
+    return x + y + z;
+  }
+}
+
+const foo = new Foo;
+const names = reflect(foo.foo).getArgumentNames(); //--> x, y, z
+
+const descriptors1 = reflect(Foo1).getDescriptors(); //--> {foo: {...}}
+const descriptors2 = reflect(foo).getDescriptors(); //--> {foo: {...}}
+
+const methods1 = reflect(Foo1).getMethods(); //--> {foo: function}
+const methods2 = reflect(foo).getMethods(); //--> {foo: function}
+```
+
+## traits Usage
+
+```js
+const { traits } = require('@openovate/jsm')
+
+class Bar {
+  bar() {}
+}
+
+class Zoo {
+  zoo() {}
+}
+
+class Foo2 extends traits(Bar, Zoo) {
+  foo() {}
+}
+
+const foo = new Foo2
+
+foo.foo()
+foo.bar()
+foo.zoo()
 ```

@@ -20,7 +20,7 @@
 
 ▸ **purge**(`hash`: object): *object*
 
-*Defined in [EventEmitter.ts:233](https://github.com/Openovate/jsm/blob/edb8b6a/src/EventEmitter.ts#L233)*
+*Defined in [EventEmitter.ts:233](https://github.com/Openovate/jsm/blob/4675aed/src/EventEmitter.ts#L233)*
 
 **Parameters:**
 

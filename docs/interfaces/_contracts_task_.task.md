@@ -21,7 +21,7 @@
 
 • **callback**: *Function*
 
-*Defined in [contracts/Task.ts:2](https://github.com/Openovate/jsm/blob/edb8b6a/src/contracts/Task.ts#L2)*
+*Defined in [contracts/Task.ts:2](https://github.com/Openovate/jsm/blob/4675aed/src/contracts/Task.ts#L2)*
 
 ___
 
@@ -29,4 +29,4 @@ ___
 
 • **priority**: *number*
 
-*Defined in [contracts/Task.ts:3](https://github.com/Openovate/jsm/blob/edb8b6a/src/contracts/Task.ts#L3)*
+*Defined in [contracts/Task.ts:3](https://github.com/Openovate/jsm/blob/4675aed/src/contracts/Task.ts#L3)*

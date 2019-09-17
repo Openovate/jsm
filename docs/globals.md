@@ -10,6 +10,7 @@
 
 * ["EventEmitter"](modules/_eventemitter_.md)
 * ["Exception"](modules/_exception_.md)
+* ["Reflection"](modules/_reflection_.md)
 * ["Registry"](modules/_registry_.md)
 * ["TaskQueue"](modules/_taskqueue_.md)
 * ["contracts/Event"](modules/_contracts_event_.md)
