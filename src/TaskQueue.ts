@@ -1,4 +1,4 @@
-import { Task, Queue } from './types';
+import { Task, ITaskQueue } from './types';
 
 /**
  * Allows asynchronous tasks to be executed in a strict,
@@ -10,7 +10,7 @@ import { Task, Queue } from './types';
  * This task queue supports FIFO and FILO processes by
  * setting priorities in tasks
  */
-export default class TaskQueue implements Queue {
+export default class TaskQueue implements ITaskQueue {
   /**
    * Used to report that there are no tasks found when ran
    */

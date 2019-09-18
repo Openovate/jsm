@@ -1,9 +1,11 @@
+import { IRegistry, Index, AnyObject } from './types';
+
 /**
  * Registry are designed to easily manipulate data in
  * preparation to integrate with any multi dimensional
  * data store.
  */
-export default class Registry {
+export default class Registry implements IRegistry {
   /**
    * @protected {Object} listeners
    */
@@ -21,7 +23,7 @@ export default class Registry {
    *
    * @param path - argument separated
    */
-  public get(...path: (string|number)[]): any {
+  public get(...path: Index[]): any {
     if (!path.length) {
       return this.data;
     }
@@ -58,7 +60,7 @@ export default class Registry {
    *
    * @param {(...String)} [path]
    */
-  public has(...path: (string|number)[]): boolean {
+  public has(...path: Index[]): boolean {
     if (!path.length) {
       return false;
     }
@@ -103,7 +105,7 @@ export default class Registry {
    *
    * @return {Registry}
    */
-  public remove(...path: (string|number)[]): Registry {
+  public remove(...path: Index[]): Registry {
     if (!path.length) {
       return this;
     }
@@ -189,7 +191,7 @@ export default class Registry {
   private makeArray(hash: object): Array<any> {
     const array: any[] = [];
 
-    const keys: (string|number)[] = Object.keys(hash);
+    const keys: Index[] = Object.keys(hash);
 
     keys.sort();
 
@@ -239,8 +241,8 @@ export default class Registry {
    * @param path - The path to the object to set
    * @param value - The value of the last path to set
    */
-  private walk(data: { [key: string]: any }, path: any, value: any): Registry {
-    let key = path.shift();
+  private walk(data: AnyObject<any>, path: Index[], value: any): Registry {
+    let key = <Index> path.shift();
     if (key === null || key === '') {
       key = Object.keys(data).length;
     }

@@ -1,4 +1,4 @@
-import { Event, Task, Emitter } from './types';
+import { IEventEmitter, Event, Task } from './types';
 import TaskQueue from './TaskQueue';
 
 /**
@@ -7,7 +7,7 @@ import TaskQueue from './TaskQueue';
  * on an action. With events you can add extra functionality
  * right after the event has triggered.
  */
-export default class EventEmitter implements Emitter {
+export default class EventEmitter implements IEventEmitter {
   /**
    * Used to report that there are no listeners found when emitted
    */

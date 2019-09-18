@@ -1,10 +1,10 @@
-import { AnyObject } from './types';
+import { IReflection, Definition, AnyObject } from './types';
 
-export default class Reflection {
+export default class Reflection implements IReflection {
   /**
    * The definition which could be a function or an object
    */
-  protected definition: Function|object;
+  protected definition: Definition;
 
   /**
    * Native methods we should not return
@@ -29,7 +29,7 @@ export default class Reflection {
    *
    * @param definition
    */
-  public constructor(definition: Function|object) {
+  public constructor(definition: Definition) {
     this.definition = definition;
   }
 
@@ -66,7 +66,7 @@ export default class Reflection {
   /**
    * Returns where the descriptors are defined
    */
-  public getDescriptors(): AnyObject<any> {
+  public getDescriptors(): AnyObject<PropertyDescriptor> {
     return Object.getOwnPropertyDescriptors(this.getMethods());
   }
 
@@ -128,11 +128,11 @@ export default class Reflection {
   }
 }
 
-function reflect(definition: Function|object): Reflection {
+function reflect(definition: Definition): Reflection {
   return new Reflection(definition);
 };
 
-function traits(...definitions: (Function|object)[]): {new(...args: any[]): any} {
+function traits(...definitions: Definition[]): {new(...args: any[]): any} {
   const definition = class {};
 
   if (!definitions.length) {
