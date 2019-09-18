@@ -1,6 +1,6 @@
 {
   "name": "@openovate/jsm",
-  "version": "0.0.9",
+  "version": "0.0.10",
   "description": "JavaScript Modules that Work in Node, and Browser",
   "author": "Christian Blanquera <cblanquera@openovate.com>",
   "license": "MIT",

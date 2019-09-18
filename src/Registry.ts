@@ -1,11 +1,11 @@
-import { IRegistry, Index, AnyObject } from './types';
+import { Index, AnyObject } from './types';
 
 /**
  * Registry are designed to easily manipulate data in
  * preparation to integrate with any multi dimensional
  * data store.
  */
-export default class Registry implements IRegistry {
+export default class Registry {
   /**
    * @protected {Object} listeners
    */

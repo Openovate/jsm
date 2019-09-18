@@ -1,6 +1,6 @@
-import { IReflection, Definition, AnyObject } from './types';
+import { Definition, AnyObject } from './types';
 
-export default class Reflection implements IReflection {
+export default class Reflection {
   /**
    * The definition which could be a function or an object
    */

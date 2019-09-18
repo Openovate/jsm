@@ -1,10 +1,8 @@
-import { IException } from './types';
-
 /**
  * Exceptions are used to give more information
  * of an error that has occured
  */
-export default class Exception implements IException {
+export default class Exception {
   /**
    * @public code
    */

@@ -34,21 +34,21 @@ export interface Emitter {
 
 //-----------------------------------//
 // Describe Class Interfaces
-export interface IEventEmitter extends Emitter {
-  listeners: Record<string, ITaskQueue>;
+export interface EventEmitter extends Emitter {
+  listeners: Record<string, TaskQueue>;
   event: Event;
   regexp: string[];
   QueueInterface: {
-    new (): ITaskQueue;
+    new (): TaskQueue;
   };
 
   emit(event: string, ...args: any[]): Promise<number>;
   match(event: string): Record<string, Event>;
-  on(event: EventName, callback: Function, priority?: number): IEventEmitter;
-  unbind(event?: string | null, callback?: Function | null): IEventEmitter;
+  on(event: EventName, callback: Function, priority?: number): EventEmitter;
+  unbind(event?: string | null, callback?: Function | null): EventEmitter;
 }
 
-export interface IException {
+export interface Exception {
   code: number;
   error: Error;
   errors: object;
@@ -57,34 +57,34 @@ export interface IException {
   stack: string;
 }
 
-export interface IReflection {
+export interface Reflection {
   getArgumentNames(): string[];
   getDescriptors(): AnyObject<PropertyDescriptor>;
   getMethods(): AnyObject<Function>;
   getPrototypeOf(): object;
 }
 
-export interface IRegistry {
+export interface Registry {
   get(...path: Index[]): any;
   getDot(notation: string, separator?: string): any;
   has(...path: Index[]): boolean;
   hasDot(notation: string, separator?: string): boolean;
-  remove(...path: Index[]): IRegistry;
-  removeDot(notation: string, separator?: string): IRegistry;
-  set(...path: any[]): IRegistry;
-  setDot(notation: string, value: any, separator?: string): IRegistry;
+  remove(...path: Index[]): Registry;
+  removeDot(notation: string, separator?: string): Registry;
+  set(...path: any[]): Registry;
+  setDot(notation: string, value: any, separator?: string): Registry;
 }
 
-export interface ITaskQueue extends Queue {
+export interface TaskQueue extends Queue {
   length: number;
-  purge(callback?: Function): ITaskQueue;
-  unbind(callback: Function): ITaskQueue;
+  purge(callback?: Function): TaskQueue;
+  unbind(callback: Function): TaskQueue;
 }
 
 //-----------------------------------//
 // Describe Types
 export type Scalar = string|number|boolean|null;
 export type Index = string|number;
-export type Errors = Error|IException;
+export type Errors = string|Error|Exception;
 export type Definition = Function|object;
 export type EventName = string|string[]|RegExp;
