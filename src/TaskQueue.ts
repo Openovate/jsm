@@ -1,5 +1,4 @@
-import Task from './contracts/Task';
-import Queue from './contracts/Queue';
+import { Task, Queue } from './types';
 
 /**
  * Allows asynchronous tasks to be executed in a strict,

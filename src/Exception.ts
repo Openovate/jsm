@@ -4,44 +4,57 @@
  */
 export default class Exception {
   /**
-   * @public {Integer} code
+   * @public code
    */
   public code: number;
 
   /**
-   * @public {Object} errors
+   * @public error
+   */
+  public error: Error;
+
+  /**
+   * @public errors
    */
   public errors: object = {};
 
   /**
-   * @public {String} message
+   * @public message
    */
   public message: string;
 
   /**
-   * @public {String} name
+   * @public name
    */
   public name: string;
 
   /**
+   * @public stack
+   */
+  public stack: string = '';
+
+  /**
    * An exception should provide a message and a name
    *
-   * @param {String} message
-   * @param {Integer} code
+   * @param message
+   * @param code
    */
   public constructor(message: string, code: number = 500) {
     this.message = message;
     this.name = this.constructor.name;
     this.code = code;
+    this.error = new Error(message);
+
+    if (this.error.stack) {
+      this.stack = this.error.stack;
+    }
   }
 
   /**
    * General use expressive reasons
    *
-   * @param {String} message
-   * @param {(...*)} values
-   *
-   * @return {Exception}
+   * @param message
+   * @param values
    */
   public static for(message: string, ...values: any[]): Exception {
     values.forEach((value: any) => {
@@ -54,9 +67,7 @@ export default class Exception {
   /**
    * Expressive error report
    *
-   * @param {*}
-   *
-   * @return {Exception}
+   * @param errors
    */
   public static forErrorsFound(errors: object): Exception {
     const exception = new this('Invalid Parameters');

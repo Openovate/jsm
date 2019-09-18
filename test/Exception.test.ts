@@ -1,4 +1,4 @@
-import { Exception } from '../dist';
+import { Exception } from '../src';
 
 class TestExeption extends Exception {}
 

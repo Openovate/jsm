@@ -1,10 +1,4 @@
-interface AnyObject {
-  [key: string]: any
-}
-
-interface KeyFunctions {
-  [key: string]: Function
-}
+import { AnyObject } from './types';
 
 export default class Reflection {
   /**
@@ -72,14 +66,14 @@ export default class Reflection {
   /**
    * Returns where the descriptors are defined
    */
-  public getDescriptors(): AnyObject {
+  public getDescriptors(): AnyObject<any> {
     return Object.getOwnPropertyDescriptors(this.getMethods());
   }
 
   /**
    * Returns where the methods are defined
    */
-  public getMethods(): KeyFunctions {
+  public getMethods(): AnyObject<Function> {
     const prototype = {};
     const definition = this.getPrototypeOf();
 
