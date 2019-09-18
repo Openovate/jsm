@@ -1,6 +1,6 @@
 {
   "name": "@openovate/jsm",
-  "version": "0.0.7",
+  "version": "0.0.8",
   "description": "JavaScript Modules that Work in Node, and Browser",
   "author": "Christian Blanquera <cblanquera@openovate.com>",
   "license": "MIT",
@@ -15,7 +15,8 @@
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "files": [
-    "dist"
+    "dist",
+    "types.ts"
   ],
   "scripts": {
     "test": "jest",
