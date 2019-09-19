@@ -34,7 +34,7 @@ export interface Emitter {
 
 //-----------------------------------//
 // Describe Types
-export type Scalar = string|number|boolean|null;
-export type Index = string|number;
-export type Definition = Function|object;
-export type EventName = string|string[]|RegExp;
+export declare type Scalar = string|number|boolean|null;
+export declare type Index = string|number;
+export declare type Definition = Function|object;
+export declare type EventName = string|string[]|RegExp;
