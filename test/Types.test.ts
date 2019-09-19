@@ -2,8 +2,6 @@ import { EventEmitter as IEventEmitter } from '../types';
 import { EventEmitter } from '../src';
 
 test('types test', async() => {
-  //this proves that classes dont need to implement interfaces
-  //where as IEventEmitter is not related to EventEmitter
   class MockEmitter {
     public events: IEventEmitter;
     public constructor() {
