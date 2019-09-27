@@ -126,6 +126,26 @@ export default class Reflection {
 
     return this.definition;
   }
+
+  /**
+   * Returns if the parameter is a class or not
+   *
+   * @param definition
+   */
+  public isClass(): boolean {
+    if (typeof this.definition === 'object') {
+      return false;
+    }
+
+    const clause = this.definition.toString();
+
+    if (clause.indexOf('class') === 0 || clause.indexOf('_classCallCheck(this,') !== -1) {
+      return true;
+    }
+
+    return false;
+  }
+
 }
 
 function reflect(definition: Definition): Reflection {
