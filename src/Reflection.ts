@@ -34,6 +34,19 @@ export default class Reflection {
   }
 
   /**
+   * Returns if the definition is a class or not
+   */
+  public isClass(): boolean {
+    if (typeof this.definition === 'object') {
+      return false;
+    }
+
+    const clause = this.definition.toString();
+    return clause.indexOf('class') === 0
+      || clause.indexOf('_classCallCheck(this,') !== -1;
+  }
+
+  /**
    * Returns the argument clause of a function
    */
   public getArgumentNames(): string[] {
@@ -125,25 +138,6 @@ export default class Reflection {
     }
 
     return this.definition;
-  }
-
-  /**
-   * Returns if the parameter is a class or not
-   *
-   * @param definition
-   */
-  public isClass(): boolean {
-    if (typeof this.definition === 'object') {
-      return false;
-    }
-
-    const clause = this.definition.toString();
-
-    if (clause.indexOf('class') === 0 || clause.indexOf('_classCallCheck(this,') !== -1) {
-      return true;
-    }
-
-    return false;
   }
 
 }
