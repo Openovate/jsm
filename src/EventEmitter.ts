@@ -74,7 +74,7 @@ export default class EventEmitter implements Emitter {
       this.listeners[event].queue.forEach((listener: Task) => {
         queue.add(async(...args: any[]) => {
           //set the current, try not to explicitly reassign the meta object
-          Object.assign(this.purge(this.event), match, listener);
+          Object.assign(this._utilityPurge(this.event), match, listener);
           //if this is the same event, call the method, if the method returns false
           if (await listener.callback(...args) === false) {
             return false;
@@ -182,7 +182,7 @@ export default class EventEmitter implements Emitter {
     //if there is no event and not callable
     if (!event && !callback) {
         //it means that they want to remove everything
-        this.purge(this.listeners);
+        this._utilityPurge(this.listeners);
         return this;
     }
 
@@ -271,7 +271,7 @@ export default class EventEmitter implements Emitter {
    *
    * @param hash - the object to be purged
    */
-  private purge(hash: Record<string, any>): object {
+  private _utilityPurge(hash: Record<string, any>): object {
     for (let key in hash) {
       delete hash[key];
     }
