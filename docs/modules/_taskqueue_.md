@@ -9,3 +9,8 @@
 ### Classes
 
 * [TaskQueue](../classes/_taskqueue_.taskqueue.md)
+
+### Interfaces
+
+* [Queue](../interfaces/_taskqueue_.queue.md)
+* [Task](../interfaces/_taskqueue_.task.md)

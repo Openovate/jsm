@@ -1,5 +1,4 @@
-import { Event, Task, Emitter } from './types';
-import TaskQueue from './TaskQueue';
+import TaskQueue, { Task, Queue } from './TaskQueue';
 
 /**
  * Allows the ability to listen to events made known by another
@@ -24,12 +23,7 @@ export default class EventEmitter implements Emitter {
   public static readonly STATUS_OK: number = TaskQueue.STATUS_OK;
 
   /**
-   * Used to inject another queue class that implements the Queue interface
-   */
-  public static QueueInterface: { new(): TaskQueue } = TaskQueue;
-
-  /**
-   * An listener map to task queues
+   * A listener map to task queues
    */
   public readonly listeners: Record<string, TaskQueue> = {};
 
@@ -48,11 +42,6 @@ export default class EventEmitter implements Emitter {
   public regexp: string[] = [];
 
   /**
-   * Used to inject another queue class that implements the Queue interface
-   */
-  public QueueInterface: { new(): TaskQueue } = EventEmitter.QueueInterface;
-
-  /**
    * Calls all the callbacks of the given event passing the given arguments
    *
    * @param event - The name of the arbitrary event to emit
@@ -68,7 +57,7 @@ export default class EventEmitter implements Emitter {
       return EventEmitter.STATUS_NOT_FOUND;
     }
 
-    const queue = new this.QueueInterface;
+    const queue = new TaskQueue;
 
     matchKeys.forEach((key: string) => {
       const match: Event = matches[key];
@@ -85,7 +74,7 @@ export default class EventEmitter implements Emitter {
       this.listeners[event].queue.forEach((listener: Task) => {
         queue.add(async(...args: any[]) => {
           //set the current, try not to explicitly reassign the meta object
-          Object.assign(purge(this.event), match, listener);
+          Object.assign(this.purge(this.event), match, listener);
           //if this is the same event, call the method, if the method returns false
           if (await listener.callback(...args) === false) {
             return false;
@@ -176,7 +165,7 @@ export default class EventEmitter implements Emitter {
 
     //add the event to the listeners
     if (typeof this.listeners[event] === 'undefined') {
-      this.listeners[event] = new this.QueueInterface;
+      this.listeners[event] = new TaskQueue;
     }
 
     this.listeners[event].add(callback, priority);
@@ -193,7 +182,7 @@ export default class EventEmitter implements Emitter {
     //if there is no event and not callable
     if (!event && !callback) {
         //it means that they want to remove everything
-        purge(this.listeners);
+        this.purge(this.listeners);
         return this;
     }
 
@@ -227,12 +216,128 @@ export default class EventEmitter implements Emitter {
 
     return this;
   }
-}
 
-function purge(hash: { [key: string]: any }): object {
-  for (let key in hash) {
-    delete hash[key];
+  /**
+   * Shortcut for middleware
+   *
+   * @param callback
+   */
+  public use(...callback: (EventEmitter|Function)[]): EventEmitter;
+  public use(callback: EventEmitter|Function): EventEmitter {
+    //if there are more than 2 arguments...
+    if (arguments.length > 1) {
+      //loop through each argument as callback
+      Array.from(arguments).forEach((callback, index) => {
+        this.use(callback);
+      });
+
+      return this;
+    }
+
+    //if the callback is an array
+    if (Array.isArray(callback)) {
+      this.use(...callback);
+      return this;
+    }
+
+    //if the callback is an EventEmitter
+    if (callback instanceof EventEmitter) {
+      Object.keys(callback.listeners).forEach((event: string) => {
+        //each event is an array of objects
+        callback.listeners[event].queue.forEach((listener: Task) => {
+          this.on(event, listener.callback, listener.priority);
+        });
+
+        //lastly link the event metas
+        callback.event = this.event;
+      });
+
+      return this;
+    }
+
+    //if the callback is a function
+    if (typeof callback === 'function') {
+      this.on('/.*/ig', callback);
+      return this;
+    }
+
+    //anything else?
+
+    return this;
   }
 
-  return hash;
+  /**
+   * Soft removes every key from an object
+   *
+   * @param hash - the object to be purged
+   */
+  private purge(hash: Record<string, any>): object {
+    for (let key in hash) {
+      delete hash[key];
+    }
+
+    return hash;
+  }
+}
+
+/**
+ * Abstraction defining what an event is
+ */
+export interface Event {
+  /**
+   * The name of the event
+   */
+  event: string;
+
+  /**
+   * The regexp pattern of the event
+   */
+  pattern: string;
+
+  /**
+   * Variables extracted from the pattern
+   */
+  variables: string[];
+
+  /**
+   * `args` from the `emit()`
+   */
+  args?: any[];
+
+  /**
+   * The current callback of the event being emitted
+   */
+  callback?: Function;
+
+  /**
+   * The priority of the callback that is currently being emitted
+   */
+  priority?: number;
+}
+
+/**
+ * Abstraction defining what an emitter is
+ */
+export interface Emitter {
+  /**
+   * A listener map to task queues
+   */
+  listeners: Record<string, Queue>;
+
+  /**
+   * Calls all the callbacks of the given event passing the given arguments
+   *
+   * @param event - The name of the arbitrary event to emit
+   * @param args - Any arguments to pass on to each listener mapped
+   */
+  emit(event: string, ...args: any[]): Promise<number>;
+
+  /**
+   * Adds a callback to the given event listener
+   *
+   * @param event - The name of the event to listen to
+   * @param callback - The task to run when event is emitted
+   * @param priority - The priority order in which call the task
+   */
+  on(event: string|string[]|RegExp, callback: Function, priority: number): Emitter
 }

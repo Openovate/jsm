@@ -1,5 +1,3 @@
-import { Index, AnyObject } from './types';
-
 /**
  * Registry are designed to easily manipulate data in
  * preparation to integrate with any multi dimensional
@@ -9,12 +7,12 @@ export default class Registry {
   /**
    * @protected {Object} listeners
    */
-  protected data: object;
+  protected data: AnyObject<any>;
 
   /**
    * Sets the initial data
    */
-  public constructor(data = {}) {
+  public constructor(data: AnyObject<any> = {}) {
     this.data = data;
   }
 
@@ -33,26 +31,13 @@ export default class Registry {
     }
 
     const last: any = path.pop();
-    let data: { [key: string]: any } = this.data;
+    let data: AnyObject<any> = this.data;
 
-    path.forEach((key: string|number) => {
+    path.forEach((key: Index) => {
       data = data[key];
     });
 
     return data[last];
-  }
-
-  /**
-   * Gets a value given the path in the registry.
-   *
-   * @param {String} notation  Name space string notation
-   * @param {String} [separator = '.'] If you want to specify a different separator other than dot
-   *
-   * @return mixed
-   */
-  public getDot(notation: string, separator: string = '.'): any {
-    const path = notation.split(separator)
-    return this.get(...path);
   }
 
   /**
@@ -67,9 +52,9 @@ export default class Registry {
 
     let found = true;
     const last: any = path.pop();
-    let data: { [key: string]: any } = this.data;
+    let data: AnyObject<any> = this.data;
 
-    path.forEach((key: string|number) => {
+    path.forEach((key: Index) => {
       if (!found) {
         return;
       }
@@ -83,19 +68,6 @@ export default class Registry {
     });
 
     return !(!found || typeof data[last] === 'undefined');
-  }
-
-  /**
-   * Checks to see if a key is set
-   *
-   * @param {String} notation  Name space string notation
-   * @param {String} [separator = '.'] If you want to specify a different separator other than dot
-   *
-   * @return {Boolean}
-   */
-  public hasDot(notation: string, separator: string = '.'): boolean {
-    const path = notation.split(separator)
-    return this.has(...path);
   }
 
   /**
@@ -115,28 +87,15 @@ export default class Registry {
     }
 
     const last: any = path.pop();
-    let data: { [key: string]: any } = this.data;
+    let data: AnyObject<any> = this.data;
 
-    path.forEach((key: string|number) => {
+    path.forEach((key: Index) => {
       data = data[key];
     });
 
     delete data[last];
 
     return this;
-  }
-
-  /**
-   * Removes name space given notation
-   *
-   * @param {String} notation  Name space string notation
-   * @param {String} [separator = '.'] If you want to specify a different separator other than dot
-   *
-   * @return {DotNotationTrait}
-   */
-  public removeDot(notation: string, separator: string = '.'): Registry {
-    const path = notation.split(separator)
-    return this.remove(...path);
   }
 
   /**
@@ -167,35 +126,20 @@ export default class Registry {
   }
 
   /**
-   * Creates the name space given the space
-   * and sets the value to that name space
-   *
-   * @param {String} notation Name space string notation
-   * @param {*} value Value to set on this namespace
-   * @param {String} [separator = '.'] If you want to specify a different separator other than dot
-   *
-   * @return {DotNotationTrait}
-   */
-  public setDot(notation: string, value: any, separator: string = '.'): Registry {
-    const path = notation.split(separator);
-    return this.set(...path, value);
-  }
-
-  /**
    * Transforms an object into an arra
    *
    * @param {Object} object
    *
    * @return {Array}
    */
-  private makeArray(hash: object): Array<any> {
+  private makeArray(hash: AnyObject<any>): Array<any> {
     const array: any[] = [];
 
     const keys: Index[] = Object.keys(hash);
 
     keys.sort();
 
-    keys.forEach((key: string|number) => {
+    keys.forEach((key: Index) => {
       // @ts-ignore
       array.push(hash[key])
     });
@@ -207,7 +151,7 @@ export default class Registry {
    *
    * @param array - The array to transform
    */
-  private makeObject(array: any[]): object {
+  private makeObject(array: Array<any>): object {
     return Object.assign({}, array);
   }
 
@@ -216,7 +160,7 @@ export default class Registry {
    *
    * @param hash - the object to test
    */
-  private shouldBeAnArray(hash: object): boolean {
+  private shouldBeAnArray(hash: AnyObject<any>): boolean {
     if (typeof hash !== 'object') {
       return false;
     }
@@ -241,7 +185,7 @@ export default class Registry {
    * @param path - The path to the object to set
    * @param value - The value of the last path to set
    */
-  private walk(data: AnyObject<any>, path: Index[], value: any): Registry {
+  private walk(data: AnyObject<any>, path: (Index|null)[], value: any): Registry {
     let key = <Index> path.shift();
     if (key === null || key === '') {
       key = Object.keys(data).length;
@@ -272,4 +216,18 @@ export default class Registry {
     data[key] = value;
     return this;
   }
+}
+
+//custom interfaces and types
+
+/**
+ * Possible path types
+ */
+export declare type Index = string|number;
+
+/**
+ * Generic any kind of object
+ */
+export interface AnyObject<T> {
+  [key: string]: T
 }

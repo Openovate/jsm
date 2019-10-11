@@ -13,7 +13,4 @@
 * ["Reflection"](modules/_reflection_.md)
 * ["Registry"](modules/_registry_.md)
 * ["TaskQueue"](modules/_taskqueue_.md)
-* ["contracts/Event"](modules/_contracts_event_.md)
-* ["contracts/Queue"](modules/_contracts_queue_.md)
-* ["contracts/Task"](modules/_contracts_task_.md)
 * ["index"](modules/_index_.md)

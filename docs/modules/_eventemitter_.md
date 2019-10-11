@@ -10,22 +10,7 @@
 
 * [EventEmitter](../classes/_eventemitter_.eventemitter.md)
 
-### Functions
+### Interfaces
 
-* [purge](_eventemitter_.md#purge)
-
-## Functions
-
-###  purge
-
-▸ **purge**(`hash`: object): *object*
-
-*Defined in [EventEmitter.ts:233](https://github.com/Openovate/jsm/blob/4675aed/src/EventEmitter.ts#L233)*
-
-**Parameters:**
-
-Name | Type |
------- | ------ |
-`hash` | object |
-
-**Returns:** *object*
+* [Emitter](../interfaces/_eventemitter_.emitter.md)
+* [Event](../interfaces/_eventemitter_.event.md)

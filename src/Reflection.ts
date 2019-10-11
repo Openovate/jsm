@@ -1,8 +1,9 @@
-import { Definition, AnyObject } from './types';
-
+/**
+ * A runtime static analyzer used to reverse-engineer classes, functions and objects
+ */
 export default class Reflection {
   /**
-   * The definition which could be a function or an object
+   * The definition which could be a class, function or an object
    */
   protected definition: Definition;
 
@@ -27,7 +28,7 @@ export default class Reflection {
   /**
    * Sets the definition
    *
-   * @param definition
+   * @param definition - The class, function or object to analyze
    */
   public constructor(definition: Definition) {
     this.definition = definition;
@@ -79,14 +80,14 @@ export default class Reflection {
   /**
    * Returns where the descriptors are defined
    */
-  public getDescriptors(): AnyObject<PropertyDescriptor> {
+  public getDescriptors(): Record<string, PropertyDescriptor> {
     return Object.getOwnPropertyDescriptors(this.getMethods());
   }
 
   /**
    * Returns where the methods are defined
    */
-  public getMethods(): AnyObject<Function> {
+  public getMethods(): Record<string, Function> {
     const prototype = {};
     const definition = this.getPrototypeOf();
 
@@ -139,14 +140,27 @@ export default class Reflection {
 
     return this.definition;
   }
-
 }
 
-function reflect(definition: Definition): Reflection {
-  return new Reflection(definition);
-};
+//additional exports
 
-function traits(...definitions: Definition[]): {new(...args: any[]): any} {
+/**
+ * A lazy implementer of Reflection
+ *
+ * @param definition - The class, function or object to analyze
+ */
+export function reflect(definition: Definition): Reflection {
+  return new Reflection(definition);
+}
+
+/**
+ * Traits are used to inherit multiple classes
+ * Usage: `class Foo extends traits(Bar, Zoo, Boom) {}`
+ *
+ * @param definitions - The classes or objects to extend
+ * @return An anonymous class with the combined methods
+ */
+export function traits(...definitions: Definition[]): AnyClass {
   const definition = class {};
 
   if (!definitions.length) {
@@ -173,8 +187,17 @@ function traits(...definitions: Definition[]): {new(...args: any[]): any} {
   return definition;
 }
 
-export {
-  Reflection,
-  reflect,
-  traits
+//custom interfaces and types
+
+/**
+ * Generic definition that the reflection class accepts
+ */
+export type Definition = Function|object;
+
+/**
+ * Used by the `trait()` method that explains the return will be an
+ * anonymous class
+ */
+export interface AnyClass {
+  new(...args: any[]): any
 }

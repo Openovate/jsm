@@ -1,9 +1,8 @@
-import EventEmitter from './EventEmitter';
+import EventEmitter, { Event, Emitter } from './EventEmitter';
 import Exception from './Exception';
-import Registry from './Registry';
-import TaskQueue from './TaskQueue';
-
-import { Reflection, reflect, traits } from './Reflection';
+import Registry, { Index } from './Registry';
+import TaskQueue, { Task, Queue } from './TaskQueue';
+import Reflection, { reflect, traits, Definition } from './Reflection';
 
 export {
   EventEmitter,
@@ -12,5 +11,11 @@ export {
   TaskQueue,
   Reflection,
   reflect,
-  traits
+  traits,
+  Event,
+  Emitter,
+  Task,
+  Queue,
+  Index,
+  Definition
 }

@@ -13,14 +13,16 @@ right after the event has triggered.
 
 * **EventEmitter**
 
+## Implements
+
+* [Emitter](../interfaces/_eventemitter_.emitter.md)
+
 ## Index
 
 ### Properties
 
-* [QueueInterface](_eventemitter_.eventemitter.md#queueinterface)
 * [listeners](_eventemitter_.eventemitter.md#listeners)
 * [regexp](_eventemitter_.eventemitter.md#regexp)
-* [QueueInterface](_eventemitter_.eventemitter.md#static-queueinterface)
 * [STATUS_INCOMPLETE](_eventemitter_.eventemitter.md#static-status_incomplete)
 * [STATUS_NOT_FOUND](_eventemitter_.eventemitter.md#static-status_not_found)
 * [STATUS_OK](_eventemitter_.eventemitter.md#static-status_ok)
@@ -30,7 +32,9 @@ right after the event has triggered.
 * [emit](_eventemitter_.eventemitter.md#emit)
 * [match](_eventemitter_.eventemitter.md#match)
 * [on](_eventemitter_.eventemitter.md#on)
+* [purge](_eventemitter_.eventemitter.md#private-purge)
 * [unbind](_eventemitter_.eventemitter.md#unbind)
+* [use](_eventemitter_.eventemitter.md#use)
 
 ### Object literals
 
@@ -38,27 +42,15 @@ right after the event has triggered.
 
 ## Properties
 
-###  QueueInterface
-
-• **QueueInterface**: *object* =  EventEmitter.QueueInterface
-
-*Defined in [EventEmitter.ts:54](https://github.com/Openovate/jsm/blob/4675aed/src/EventEmitter.ts#L54)*
-
-Used to inject another queue class that implements the Queue interface
-
-#### Type declaration:
-
-* **new __type**(): *[TaskQueue](_taskqueue_.taskqueue.md)*
-
-___
-
 ###  listeners
 
 • **listeners**: *Record‹string, [TaskQueue](_taskqueue_.taskqueue.md)›*
 
-*Defined in [EventEmitter.ts:35](https://github.com/Openovate/jsm/blob/4675aed/src/EventEmitter.ts#L35)*
+*Implementation of [Emitter](../interfaces/_eventemitter_.emitter.md).[listeners](../interfaces/_eventemitter_.emitter.md#listeners)*
 
-An listener map to task queues
+*Defined in [EventEmitter.ts:28](https://github.com/Openovate/jsm/blob/214a343/src/EventEmitter.ts#L28)*
+
+A listener map to task queues
 
 ___
 
@@ -66,23 +58,9 @@ ___
 
 • **regexp**: *string[]* =  []
 
-*Defined in [EventEmitter.ts:49](https://github.com/Openovate/jsm/blob/4675aed/src/EventEmitter.ts#L49)*
+*Defined in [EventEmitter.ts:42](https://github.com/Openovate/jsm/blob/214a343/src/EventEmitter.ts#L42)*
 
 Event regular expression map
-
-___
-
-### `Static` QueueInterface
-
-▪ **QueueInterface**: *object* =  TaskQueue
-
-*Defined in [EventEmitter.ts:30](https://github.com/Openovate/jsm/blob/4675aed/src/EventEmitter.ts#L30)*
-
-Used to inject another queue class that implements the Queue interface
-
-#### Type declaration:
-
-* **new __type**(): *[TaskQueue](_taskqueue_.taskqueue.md)*
 
 ___
 
@@ -90,7 +68,7 @@ ___
 
 ▪ **STATUS_INCOMPLETE**: *number* =  TaskQueue.STATUS_INCOMPLETE
 
-*Defined in [EventEmitter.ts:20](https://github.com/Openovate/jsm/blob/4675aed/src/EventEmitter.ts#L20)*
+*Defined in [EventEmitter.ts:18](https://github.com/Openovate/jsm/blob/214a343/src/EventEmitter.ts#L18)*
 
 Used to report that a listener aborted the emit when ran
 
@@ -100,7 +78,7 @@ ___
 
 ▪ **STATUS_NOT_FOUND**: *number* =  TaskQueue.STATUS_EMPTY
 
-*Defined in [EventEmitter.ts:15](https://github.com/Openovate/jsm/blob/4675aed/src/EventEmitter.ts#L15)*
+*Defined in [EventEmitter.ts:13](https://github.com/Openovate/jsm/blob/214a343/src/EventEmitter.ts#L13)*
 
 Used to report that there are no listeners found when emitted
 
@@ -110,7 +88,7 @@ ___
 
 ▪ **STATUS_OK**: *number* =  TaskQueue.STATUS_OK
 
-*Defined in [EventEmitter.ts:25](https://github.com/Openovate/jsm/blob/4675aed/src/EventEmitter.ts#L25)*
+*Defined in [EventEmitter.ts:23](https://github.com/Openovate/jsm/blob/214a343/src/EventEmitter.ts#L23)*
 
 * Used to report that all listeners were executed
 
@@ -120,7 +98,9 @@ ___
 
 ▸ **emit**(`event`: string, ...`args`: any[]): *Promise‹number›*
 
-*Defined in [EventEmitter.ts:62](https://github.com/Openovate/jsm/blob/4675aed/src/EventEmitter.ts#L62)*
+*Implementation of [Emitter](../interfaces/_eventemitter_.emitter.md)*
+
+*Defined in [EventEmitter.ts:50](https://github.com/Openovate/jsm/blob/214a343/src/EventEmitter.ts#L50)*
 
 Calls all the callbacks of the given event passing the given arguments
 
@@ -137,9 +117,9 @@ ___
 
 ###  match
 
-▸ **match**(`event`: string): *Record‹string, [Event](../interfaces/_contracts_event_.event.md)›*
+▸ **match**(`event`: string): *Record‹string, [Event](../interfaces/_eventemitter_.event.md)›*
 
-*Defined in [EventEmitter.ts:107](https://github.com/Openovate/jsm/blob/4675aed/src/EventEmitter.ts#L107)*
+*Defined in [EventEmitter.ts:95](https://github.com/Openovate/jsm/blob/214a343/src/EventEmitter.ts#L95)*
 
 Returns possible event matches
 
@@ -149,7 +129,7 @@ Name | Type | Description |
 ------ | ------ | ------ |
 `event` | string | The name of the arbitrary event to match  |
 
-**Returns:** *Record‹string, [Event](../interfaces/_contracts_event_.event.md)›*
+**Returns:** *Record‹string, [Event](../interfaces/_eventemitter_.event.md)›*
 
 ___
 
@@ -157,7 +137,9 @@ ___
 
 ▸ **on**(`event`: string | string[] | RegExp, `callback`: Function, `priority`: number): *[EventEmitter](_eventemitter_.eventemitter.md)*
 
-*Defined in [EventEmitter.ts:157](https://github.com/Openovate/jsm/blob/4675aed/src/EventEmitter.ts#L157)*
+*Implementation of [Emitter](../interfaces/_eventemitter_.emitter.md)*
+
+*Defined in [EventEmitter.ts:145](https://github.com/Openovate/jsm/blob/214a343/src/EventEmitter.ts#L145)*
 
 Adds a callback to the given event listener
 
@@ -173,11 +155,29 @@ Name | Type | Default | Description |
 
 ___
 
+### `Private` purge
+
+▸ **purge**(`hash`: Record‹string, any›): *object*
+
+*Defined in [EventEmitter.ts:274](https://github.com/Openovate/jsm/blob/214a343/src/EventEmitter.ts#L274)*
+
+Soft removes every key from an object
+
+**Parameters:**
+
+Name | Type | Description |
+------ | ------ | ------ |
+`hash` | Record‹string, any› | the object to be purged  |
+
+**Returns:** *object*
+
+___
+
 ###  unbind
 
 ▸ **unbind**(`event`: string | null, `callback`: Function | null): *[EventEmitter](_eventemitter_.eventemitter.md)*
 
-*Defined in [EventEmitter.ts:193](https://github.com/Openovate/jsm/blob/4675aed/src/EventEmitter.ts#L193)*
+*Defined in [EventEmitter.ts:181](https://github.com/Openovate/jsm/blob/214a343/src/EventEmitter.ts#L181)*
 
 Stops listening to an event
 
@@ -190,13 +190,31 @@ Name | Type | Default | Description |
 
 **Returns:** *[EventEmitter](_eventemitter_.eventemitter.md)*
 
+___
+
+###  use
+
+▸ **use**(...`callback`: Function | [EventEmitter](_eventemitter_.eventemitter.md)[]): *[EventEmitter](_eventemitter_.eventemitter.md)*
+
+*Defined in [EventEmitter.ts:225](https://github.com/Openovate/jsm/blob/214a343/src/EventEmitter.ts#L225)*
+
+Shortcut for middleware
+
+**Parameters:**
+
+Name | Type | Description |
+------ | ------ | ------ |
+`...callback` | Function &#124; [EventEmitter](_eventemitter_.eventemitter.md)[] |   |
+
+**Returns:** *[EventEmitter](_eventemitter_.eventemitter.md)*
+
 ## Object literals
 
 ###  event
 
 ### ▪ **event**: *object*
 
-*Defined in [EventEmitter.ts:40](https://github.com/Openovate/jsm/blob/4675aed/src/EventEmitter.ts#L40)*
+*Defined in [EventEmitter.ts:33](https://github.com/Openovate/jsm/blob/214a343/src/EventEmitter.ts#L33)*
 
 Static event data analyzer
 
@@ -204,16 +222,16 @@ Static event data analyzer
 
 • **event**: *string* = "idle"
 
-*Defined in [EventEmitter.ts:41](https://github.com/Openovate/jsm/blob/4675aed/src/EventEmitter.ts#L41)*
+*Defined in [EventEmitter.ts:34](https://github.com/Openovate/jsm/blob/214a343/src/EventEmitter.ts#L34)*
 
 ###  pattern
 
 • **pattern**: *string* = "idle"
 
-*Defined in [EventEmitter.ts:42](https://github.com/Openovate/jsm/blob/4675aed/src/EventEmitter.ts#L42)*
+*Defined in [EventEmitter.ts:35](https://github.com/Openovate/jsm/blob/214a343/src/EventEmitter.ts#L35)*
 
 ###  variables
 
 • **variables**: *never[]* =  []
 
-*Defined in [EventEmitter.ts:43](https://github.com/Openovate/jsm/blob/4675aed/src/EventEmitter.ts#L43)*
+*Defined in [EventEmitter.ts:36](https://github.com/Openovate/jsm/blob/214a343/src/EventEmitter.ts#L36)*

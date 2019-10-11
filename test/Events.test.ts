@@ -199,3 +199,27 @@ test('event async', async() => {
   await emitter.emit('async test 2', 1);
   expect(actual2[0]).toBe(2);
 });
+
+test('event use', async() => {
+  const emitter1 = new EventEmitter;
+  const emitter2 = new EventEmitter;
+
+  let triggered: number[] = [];
+  emitter1.on('trigger basic something', async (x: number) => {
+    expect(x).toBe(1);
+    triggered.push(1);
+  }, 1);
+
+  emitter2.on('trigger basic something', async (x: number) => {
+    expect(x).toBe(1);
+    triggered.push(2);
+  }, 2);
+
+  emitter1.use(emitter2)
+
+  await emitter1.emit('trigger basic something', 1);
+
+  expect(triggered.length).toBe(2);
+  expect(triggered[0]).toBe(2);
+  expect(triggered[1]).toBe(1);
+})

@@ -20,9 +20,11 @@ of an error that has occured
 ### Properties
 
 * [code](_exception_.exception.md#code)
+* [error](_exception_.exception.md#error)
 * [errors](_exception_.exception.md#errors)
 * [message](_exception_.exception.md#message)
 * [name](_exception_.exception.md#name)
+* [stack](_exception_.exception.md#stack)
 
 ### Methods
 
@@ -35,7 +37,7 @@ of an error that has occured
 
 \+ **new Exception**(`message`: string, `code`: number): *[Exception](_exception_.exception.md)*
 
-*Defined in [Exception.ts:24](https://github.com/Openovate/jsm/blob/4675aed/src/Exception.ts#L24)*
+*Defined in [Exception.ts:34](https://github.com/Openovate/jsm/blob/214a343/src/Exception.ts#L34)*
 
 An exception should provide a message and a name
 
@@ -43,8 +45,8 @@ An exception should provide a message and a name
 
 Name | Type | Default | Description |
 ------ | ------ | ------ | ------ |
-`message` | string | - | - |
-`code` | number | 500 |   |
+`message` | string | - | The exception message |
+`code` | number | 500 | The custom exception code  |
 
 **Returns:** *[Exception](_exception_.exception.md)*
 
@@ -54,7 +56,19 @@ Name | Type | Default | Description |
 
 • **code**: *number*
 
-*Defined in [Exception.ts:9](https://github.com/Openovate/jsm/blob/4675aed/src/Exception.ts#L9)*
+*Defined in [Exception.ts:9](https://github.com/Openovate/jsm/blob/214a343/src/Exception.ts#L9)*
+
+The custom exception code
+
+___
+
+###  error
+
+• **error**: *Error*
+
+*Defined in [Exception.ts:14](https://github.com/Openovate/jsm/blob/214a343/src/Exception.ts#L14)*
+
+The original error object
 
 ___
 
@@ -62,7 +76,9 @@ ___
 
 • **errors**: *object*
 
-*Defined in [Exception.ts:14](https://github.com/Openovate/jsm/blob/4675aed/src/Exception.ts#L14)*
+*Defined in [Exception.ts:19](https://github.com/Openovate/jsm/blob/214a343/src/Exception.ts#L19)*
+
+A custom list of itemized errors
 
 ___
 
@@ -70,7 +86,9 @@ ___
 
 • **message**: *string*
 
-*Defined in [Exception.ts:19](https://github.com/Openovate/jsm/blob/4675aed/src/Exception.ts#L19)*
+*Defined in [Exception.ts:24](https://github.com/Openovate/jsm/blob/214a343/src/Exception.ts#L24)*
+
+The exception message
 
 ___
 
@@ -78,7 +96,19 @@ ___
 
 • **name**: *string*
 
-*Defined in [Exception.ts:24](https://github.com/Openovate/jsm/blob/4675aed/src/Exception.ts#L24)*
+*Defined in [Exception.ts:29](https://github.com/Openovate/jsm/blob/214a343/src/Exception.ts#L29)*
+
+The name of the exception
+
+___
+
+###  stack
+
+• **stack**: *string* = ""
+
+*Defined in [Exception.ts:34](https://github.com/Openovate/jsm/blob/214a343/src/Exception.ts#L34)*
+
+The stack trace that led up to this exception
 
 ## Methods
 
@@ -86,7 +116,7 @@ ___
 
 ▸ **for**(`message`: string, ...`values`: any[]): *[Exception](_exception_.exception.md)*
 
-*Defined in [Exception.ts:46](https://github.com/Openovate/jsm/blob/4675aed/src/Exception.ts#L46)*
+*Defined in [Exception.ts:59](https://github.com/Openovate/jsm/blob/214a343/src/Exception.ts#L59)*
 
 General use expressive reasons
 
@@ -94,8 +124,8 @@ General use expressive reasons
 
 Name | Type | Description |
 ------ | ------ | ------ |
-`message` | string | - |
-`...values` | any[] |   |
+`message` | string | The exception message template. Uses `%s` to represent values |
+`...values` | any[] | The exception message values to bind in order of `%s`  |
 
 **Returns:** *[Exception](_exception_.exception.md)*
 
@@ -105,14 +135,14 @@ ___
 
 ▸ **forErrorsFound**(`errors`: object): *[Exception](_exception_.exception.md)*
 
-*Defined in [Exception.ts:61](https://github.com/Openovate/jsm/blob/4675aed/src/Exception.ts#L61)*
+*Defined in [Exception.ts:72](https://github.com/Openovate/jsm/blob/214a343/src/Exception.ts#L72)*
 
 Expressive error report
 
 **Parameters:**
 
-Name | Type |
------- | ------ |
-`errors` | object |
+Name | Type | Description |
+------ | ------ | ------ |
+`errors` | object | The itemized errors found  |
 
 **Returns:** *[Exception](_exception_.exception.md)*
