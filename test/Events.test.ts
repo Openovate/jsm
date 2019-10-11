@@ -48,6 +48,40 @@ test('trigger basic event', async () => {
   expect(triggered[1]).toBe(1);
 });
 
+test('event meta', async () => {
+  const emitter = new EventEmitter;
+
+  let triggered: number[] = [];
+  emitter.on(/^trigger basic (.+)$/, async function something1() {
+    expect(emitter.event.event).toBe('trigger basic something');
+    expect(emitter.event.pattern).toBe('/^trigger basic (.+)$/');
+    expect(emitter.event.variables[0]).toBe('something');
+    // @ts-ignore
+    expect(emitter.event.args[0]).toBe(1);
+    expect(emitter.event.callback).toBe(something1);
+    expect(emitter.event.priority).toBe(2);
+    triggered.push(1)
+  }, 2);
+
+  emitter.on(/trigger (.+) something$/, async function something2() {
+    expect(emitter.event.event).toBe('trigger basic something');
+    expect(emitter.event.pattern).toBe('/trigger (.+) something$/');
+    expect(emitter.event.variables[0]).toBe('basic');
+    // @ts-ignore
+    expect(emitter.event.args[0]).toBe(1);
+    expect(emitter.event.callback).toBe(something2);
+    expect(emitter.event.priority).toBe(1);
+    triggered.push(2)
+  }, 1);
+
+  const actual = await emitter.emit('trigger basic something', 1);
+
+  expect(triggered.length).toBe(2);
+  expect(triggered[0]).toBe(1);
+  expect(triggered[1]).toBe(2);
+  expect(actual).toBe(EventEmitter.STATUS_OK);
+});
+
 test('trigger advance event', async () => {
   const emitter = new EventEmitter;
 
