@@ -271,7 +271,7 @@ export default class EventEmitter implements Emitter {
    *
    * @param hash - the object to be purged
    */
-  private _utilityPurge(hash: Record<string, any>): object {
+  protected _utilityPurge(hash: Record<string, any>): object {
     for (let key in hash) {
       delete hash[key];
     }
@@ -330,7 +330,7 @@ export interface Emitter {
    * @param event - The name of the arbitrary event to emit
    * @param args - Any arguments to pass on to each listener mapped
    */
-  emit(event: string, ...args: any[]): Promise<number>;
+  emit(event: string, ...args: any[]): Promise<any>;
 
   /**
    * Adds a callback to the given event listener
