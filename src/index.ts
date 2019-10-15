@@ -1,5 +1,5 @@
 import EventEmitter, { Event, Emitter } from './EventEmitter';
-import EventPromise, { PromiseAbort } from './EventPromise';
+import EventPromise, { PromiseAbort, NextEmit } from './EventPromise';
 import Exception from './Exception';
 import Registry, { Index } from './Registry';
 import TaskQueue, { Task, Queue } from './TaskQueue';
@@ -16,6 +16,7 @@ export {
   traits,
   Event,
   Emitter,
+  NextEmit,
   PromiseAbort,
   Task,
   Queue,

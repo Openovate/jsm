@@ -71,7 +71,7 @@ export default class EventEmitter implements Emitter {
       match.args = args;
 
       //then loop the observers
-      this.listeners[event].queue.forEach((listener: Task) => {
+      this.listeners[event].each((listener: Task) => {
         queue.add(async(...args: any[]) => {
           //set the current, try not to explicitly reassign the meta object
           Object.assign(this._utilityPurge(this.event), match, listener);

@@ -75,6 +75,21 @@ export default class TaskQueue implements Queue {
   }
 
   /**
+   * iterator for each task
+   *
+   * @param callback - the iterative callback
+   */
+  public each(callback: Function): TaskQueue {
+    for (const task of this.queue) {
+      if (callback(task) === false) {
+        return this;
+      }
+    }
+
+    return this;
+  }
+
+  /**
    * Removes all tasks from the queue
    *
    * @param callback - returns each task into this function
